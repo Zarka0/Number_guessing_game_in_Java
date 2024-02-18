@@ -1,0 +1,57 @@
+import java.util.*;
+
+class Game {
+    public int number;
+    public int numOfGuesses = 0;;
+    public int inputnum;
+
+    Game() {
+        Random rand = new Random();
+        this.number = rand.nextInt(100);
+    }
+
+    void takeUserInput() {
+        System.out.println("Enter your guess: ");
+        Scanner read = new Scanner(System.in);
+        inputnum = read.nextInt();
+
+    }
+
+    boolean isCorrectNumber() {
+        numOfGuesses++;
+        if (inputnum == number) {
+            System.out.println("Congratulations! You won \3 \nYou guessed it in " + numOfGuesses + " attempts");
+            return true;
+        } else if (inputnum < number) {
+            System.out.println("Your guess is too low! :(");
+
+        }
+        if (inputnum > number) {
+            System.out.println("Your guess is too high! :(");
+
+        }
+        return false;
+    }
+
+    void setNumOfGuesses(int numOfGuesses) {
+        this.numOfGuesses = numOfGuesses;
+    }
+
+    int getNumOfGuesses() {
+        return numOfGuesses;
+    }
+}
+
+public class number_guessing_game_oops {
+    public static void main(String[] args) {
+        System.out.println("******Welcome to the number guessing game*****");
+        System.out.println("You can guess between 1-100");
+        Game g = new Game();
+        boolean b = false;
+        while (!b) {
+            g.takeUserInput();
+            b = g.isCorrectNumber();
+            
+        }
+    }
+}
